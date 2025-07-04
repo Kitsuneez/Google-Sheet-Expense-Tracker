@@ -72,11 +72,13 @@ We will be automating two functions in our App Script
 2. Select "New Deployment"
     - Type: Web app
     - Who has access: Anyone
+3 copy url for IOS shortcut later (__NOT__ Library)
 
 ### IOS Shortcut
 
 1. Download [Shortcut]("ExpenseTracker.shortcut") on IPhone
 2. Click on Share > Open in Shortcut App
 3. Select "Add Shortcut"
+4. Replace the last action shortcut with the url of the deployment created in the previous step.
 
 > Optional: Add shortcut to homescreen / Automation to run when Apple Pay is used.
