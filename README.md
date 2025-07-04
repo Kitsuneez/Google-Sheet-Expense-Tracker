@@ -26,12 +26,13 @@ This is an expense tracker utilising free software such as google sheet and goog
 ### Automation Triggers
 
 In Google App Script, we can create triggers to automate the creation of new Sheets for a new month. There are a few types of triggers:
-    &nbsp;&nbsp;&nbsp;&nbsp;1. Time-Based
-    &nbsp;&nbsp;&nbsp;&nbsp;2. From Calender
+1. Time-Based
+2. From Calender
 
 We will be automating two functions in our App Script
-    &nbsp;&nbsp;&nbsp;&nbsp;1. updateSheetNamesRow
-    &nbsp;&nbsp;&nbsp;&nbsp;2. createNewSheet
+
+1. updateSheetNamesRow
+2. createNewSheet
 
 #### Steps
 
