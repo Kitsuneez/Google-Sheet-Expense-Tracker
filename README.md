@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is an expense tracker utilising free software such as google sheet and google app script for apple users
+This is an expense tracker utilizing free software such as google sheet and google app script for apple users
 
 ### Prerequisites
 
@@ -26,8 +26,9 @@ This is an expense tracker utilising free software such as google sheet and goog
 ### Automation Triggers
 
 In Google App Script, we can create triggers to automate the creation of new Sheets for a new month. There are a few types of triggers:
+
 1. Time-Based
-2. From Calender
+2. From Calendar
 
 We will be automating two functions in our App Script
 
@@ -72,13 +73,13 @@ We will be automating two functions in our App Script
 2. Select "New Deployment"
     - Type: Web app
     - Who has access: Anyone
-3 copy url for IOS shortcut later (__NOT__ Library URL)
+3 copy URL for IOS shortcut later (__NOT__ Library URL)
 
 ### IOS Shortcut
 
 1. Download [Shortcut]("ExpenseTracker.shortcut") on IPhone
 2. Click on Share > Open in Shortcut App
-3. Select "Add Shortcut"
-4. Replace the last action shortcut with the url of the deployment created in the previous step.
+3. Select "Add Shortcut".
+4. Replace the last action shortcut with the URL of the deployment created in the previous step.
 
-> Optional: Add shortcut to homescreen / Automation to run when Apple Pay is used.
+> Optional: Add shortcut to home screen / Automation to run when Apple Pay is used.
