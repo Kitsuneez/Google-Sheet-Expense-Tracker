@@ -52,7 +52,7 @@ We will be automating two functions in our App Script
             - Select the time you want it to update daily
     2. createNewSheet
         - Choose which function to run
-            - updateSheetNamesRow
+            - createNewSheet
         - Choose which deployment should run
             - Leave it as default
         - Select event source
