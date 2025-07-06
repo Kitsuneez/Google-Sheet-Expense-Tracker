@@ -5,7 +5,7 @@ function doPost(e) {
   var name = e.parameter["Expense"]
   var amount = e.parameter["Amount"]
   var category = e.parameter["Category"]
-  row = [name, category, amount]
+  row = [toTitleCase(name), category, amount]
   var date = new Date(Date.now())
   date = Utilities.formatDate(date,"SGT", "MMMM yyyy")
   const sheet = SpreadsheetApp.openById(Sheet_Id).getSheetByName(date); // or your tab name
@@ -19,6 +19,11 @@ function GetLastRow(sheet){
     return sheet.getRange('A' + sheet.getLastRow()).getNextDataCell(SpreadsheetApp.Direction.UP).getRow();
   }
   return sheet.getLastRow();
+}
+
+function toTitleCase(name){
+  // converts input for expense name to title case regex is word bounded and will replace all lowercase with uppercase letters
+  return name.toLowerCase().replace(/\b[a-z]/ig, function(match) {return match.toUpperCase()})
 }
 
 function updateSheetNamesRow() {
