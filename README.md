@@ -21,7 +21,7 @@ This is an expense tracker utilizing free software such as google sheet and goog
     > Replace code if needed such as SHEET_ID in PropertyService\.gs
 
 4. Run PropertyService\.gs to save the SHEET_ID for the script to use later.
-    ![alt text](image-1.png)
+    ![alt text](.\Images\image-1.png)
 
 ### Automation Triggers
 
@@ -65,7 +65,7 @@ We will be automating two functions in our App Script
             - Midnight to 1am
 
 > If you are creating this in the middle of the month, run "createNewSheet" Function manually.
-    - Follow the following image ![alt text](image.png)
+    - Follow the following image ![alt text](.\Images\image.png)
 
 ### Deployment
 
