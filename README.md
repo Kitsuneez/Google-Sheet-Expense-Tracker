@@ -73,7 +73,7 @@ We will be automating two functions in our App Script
 2. Select "New Deployment"
     - Type: Web app
     - Who has access: Anyone
-3 copy URL for IOS shortcut later (__NOT__ Library URL)
+3. copy URL for IOS shortcut later (__NOT__ Library URL)
 
 ### IOS Shortcut
 
