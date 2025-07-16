@@ -9,7 +9,7 @@ function doPost(e) {
   var category = e.parameter["Category"]
   row = [toTitleCase(name), category, amount]
   const sheet = getSheetByDate() // or your tab name
-  var lastRow = getLastRow(sheet, 'A1:A')
+  var lastRow = getLastRow(sheet, 'A1:A') + 1
   console.log(lastRow)
   sheet.getRange(lastRow, 1, 1, row.length).setValues([row]);
 }
@@ -18,7 +18,7 @@ function doGet(e){
   const sheet = getSheetByDate()
 
   const colsToTake = 2
-  const rowsToTake = getLastRow(sheet, "F1:F") - 1
+  const rowsToTake = getLastRow(sheet, "F1:F")
   const colToStart = 5
   const rowToStart = 1
 
@@ -51,18 +51,18 @@ function updateSheetNamesRow() {
 
   var cur = 1; // cursor to allow the program to know which row is it at 
   var row = 1; // row to start from
-  var rows = getLastRow(templateSheet, "E2:E") // number of rows to occupy (6 categories + Overall)
+  var rows = getLastRow(templateSheet, "F1:F") // number of rows to occupy (6 categories + Overall)
   for (var i = 2; i < sheets.length; i++) {
       var name = sheets[i].getName();
       val = sheets[i].getRange(`E1:F${rows}`).getValues();
-      val.push(val.shift())
       // write total expenses from other sheets into first page
       sheet.getRange(row, cur, rows, val[0].length).clearContent().clearFormat()
         .setValues(val)
         .setBackground("#D7FCD4") //background color: grey
         .setBorder(true,true,true,true,true,true); //borders
 
-      sheet.getRange(rows, 1, 1, 2).setBackground("#72F3FF").setFontWeight("Bold")
+      sheet.getRange(rows, 1, 1, 1).setValue("Overall")
+      sheet.getRange(rows, 1, 1, 2).setBackground("#72F3FF").setFontWeight("Bold")//overall
 
       //set number format to be $0.00
       sheet.getRange(row+1, cur+1, rows, val[0].length).setNumberFormat("$#,##0.00")

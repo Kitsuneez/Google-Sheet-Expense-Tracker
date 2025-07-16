@@ -21,6 +21,7 @@ var monokaiPro = [
   '#FFB6C1',
   '#E6DB74'
 ];
+const font = new Font("Menlo", 11)
 const widget = createWidget(data)
 Script.setWidget(widget)
 Script.complete()
@@ -32,7 +33,7 @@ function createWidget(data) {
   bgColor.colors = [new Color("#29323c"), new Color("#1c1c1c")]
   bgColor.locations = [0.0, 1.0]
   w.backgroundGradient = bgColor
-  w.setPadding(12, 15, 15, 12)
+  w.setPadding(12, 10, 10, 12)
   w.spacing = 6
   var total = data.pop()
   for(let i=0; i < data.length-1; i+=2){
@@ -42,11 +43,14 @@ function createWidget(data) {
   };
   if (data.length % 2 == 1){
     var last = data.pop()
-    addRow(w, `${last[0]} ~$ ${last[1].toFixed(2)}`,"")
+    addRow(w, pad(`${last[0]}`,`~$ ${last[1].toFixed(2)}`),"")
   }
-  var line = w.addText("-".repeat(30))
-  line.centerAlignText()
-  addRow(w, `Total ~$ ${total[1].toFixed(2)}`,"")
+  w.addSpacer()
+  let row = w.addStack()
+  row.spacing = 0;
+  var left = row.addText(pad(`Total`,`~$ ${total[1].toFixed(2)}`))
+  left.textColor = new Color(monokaiPro.shift())
+  left.font = font
   return w
 }
 
@@ -59,7 +63,7 @@ async function fetchData() {
 
 function pad(first, second){
   let mpad = ' '.repeat(14-first.length)
-  let rpad = ' '.repeat(16-second.length)
+  let rpad = ' '.repeat(18-second.length)
   return (first + mpad + second + rpad)
 }
 
@@ -68,8 +72,8 @@ function addRow(parent, first, second){
   row.spacing = 0;
   var left = row.addText(first)
   left.textColor = new Color(monokaiPro.pop())
-  left.font = new Font("Menlo",10)
+  left.font = font
   var right = row.addText(second)
   right.textColor = new Color(monokaiPro.pop())
-  right.font = new Font("Menlo",10)
+  right.font = font
 }
