@@ -9,8 +9,8 @@ function doPost(e) {
   var category = e.parameter["Category"]
   row = [toTitleCase(name), category, amount]
   const sheet = getSheetByDate() // or your tab name
-  var lastrow = GetLastRow(sheet, 'A1:A')
-  sheet.getRange(lastrow, 1, 1, row.length).setValues([row]);
+  var lastRow = GetLastRow(sheet, 'A1:A')
+  sheet.getRange(lastRow, 1, 1, row.length).setValues([row]);
 }
 
 function doGet(e){
