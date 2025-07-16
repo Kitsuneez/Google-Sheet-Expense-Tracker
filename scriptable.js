@@ -1,3 +1,4 @@
+const url = ""
 const data = await fetchData()
 var monokaiPro = [
   '#F8F8F2',
@@ -55,7 +56,6 @@ function createWidget(data) {
 }
 
 async function fetchData() {
-  const url = "https://script.google.com/macros/s/AKfycbzQ9s5CGWXzNxdA3pmSK6WrJG7fMgPm9C5RVaPxI_dHzGDUNGGxB4Qvn8_MhjcyBnvG3w/exec"
   const request = new Request(url)
   const res = await request.loadJSON()
   return res.data
