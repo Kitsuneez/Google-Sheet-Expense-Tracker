@@ -46,7 +46,7 @@ function createWidget(data) {
     addRow(w, `${last[0]} ~$ ${last[1].toFixed(2)}`,"")
   }
   w.addText("-".repeat(30))
-    addRow(w, `${total[0]} ~$ ${total[1].toFixed(2)}`,"")
+    addRow(w, `Total ~$ ${total[1].toFixed(2)}`,"")
   return w
 }
 
