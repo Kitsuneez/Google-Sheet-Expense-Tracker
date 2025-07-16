@@ -34,19 +34,19 @@ function createWidget(data) {
   w.backgroundGradient = bgColor
   w.setPadding(12, 15, 15, 12)
   w.spacing = 6
-  const COLUMN_WIDTH = 21
   var total = data.pop()
   for(let i=0; i < data.length-1; i+=2){
-    let first = padLeft(`${data[i][0]} ~$ ${data[i][1].toFixed(2)}`, COLUMN_WIDTH)
-    let second = `${data[i+1][0]} ~$ ${data[i+1][1].toFixed(2)}`
+    let first = pad(`${data[i][0]}`,`~$ ${data[i][1].toFixed(2)}`)
+    let second = pad(`${data[i+1][0]}`,`~$ ${data[i+1][1].toFixed(2)}`)
     addRow(w, first , second)
   };
   if (data.length % 2 == 1){
     var last = data.pop()
     addRow(w, `${last[0]} ~$ ${last[1].toFixed(2)}`,"")
   }
-  w.addText("-".repeat(30))
-    addRow(w, `Total ~$ ${total[1].toFixed(2)}`,"")
+  var line = w.addText("-".repeat(30))
+  line.centerAlignText()
+  addRow(w, `Total ~$ ${total[1].toFixed(2)}`,"")
   return w
 }
 
@@ -57,9 +57,10 @@ async function fetchData() {
   return res.data
 }
 
-function padLeft(str, length){
-  let pad = ' '.repeat(length)
-  return (str + pad).substring(0, pad.length)
+function pad(first, second){
+  let mpad = ' '.repeat(14-first.length)
+  let rpad = ' '.repeat(16-second.length)
+  return (first + mpad + second + rpad)
 }
 
 function addRow(parent, first, second){

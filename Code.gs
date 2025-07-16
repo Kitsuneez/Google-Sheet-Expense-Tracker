@@ -9,7 +9,8 @@ function doPost(e) {
   var category = e.parameter["Category"]
   row = [toTitleCase(name), category, amount]
   const sheet = getSheetByDate() // or your tab name
-  var lastRow = GetLastRow(sheet, 'A1:A')
+  var lastRow = getLastRow(sheet, 'A1:A')
+  console.log(lastRow)
   sheet.getRange(lastRow, 1, 1, row.length).setValues([row]);
 }
 
@@ -17,7 +18,7 @@ function doGet(e){
   const sheet = getSheetByDate()
 
   const colsToTake = 2
-  const rowsToTake = GetLastRow(sheet, "E2:E")
+  const rowsToTake = getLastRow(sheet, "F1:F") - 1
   const colToStart = 5
   const rowToStart = 1
 
@@ -36,10 +37,10 @@ function toTitleCase(name){
   return name.replace(/\b[a-z]/ig, function(match) {return match.toUpperCase()})
 }
 
-function GetLastRow(sheet, col){
+function getLastRow(sheet, col){
   var lastRow = sheet.getLastRow();
   var values = sheet.getRange(col + lastRow).getValues();
-  return values.flat(Infinity).filter(Boolean).length + 1
+  return values.flat(Infinity).filter(item=>item!=='').length + 1
 }
 
 function updateSheetNamesRow() {
@@ -50,7 +51,7 @@ function updateSheetNamesRow() {
 
   var cur = 1; // cursor to allow the program to know which row is it at 
   var row = 1; // row to start from
-  var rows = GetLastRow(templateSheet, "E2:E") // number of rows to occupy (6 categories + Overall)
+  var rows = getLastRow(templateSheet, "E2:E") // number of rows to occupy (6 categories + Overall)
   for (var i = 2; i < sheets.length; i++) {
       var name = sheets[i].getName();
       val = sheets[i].getRange(`E1:F${rows}`).getValues();
