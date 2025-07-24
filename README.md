@@ -31,15 +31,10 @@ This is an expense tracker utilizing free software such as google sheet and goog
 2. Create an [App Script](https://script.google.com/home/projects/create) with the following files.
 
    - Code\.gs (Created by default)
-   - PropertyService\.gs
-     > Note: _when prompted with HTML/Script, select **Script**._
 
 3. Copy contents of file in Repository and paste in the respective files.
 
-   > Replace code if needed such as SHEET_ID in PropertyService\.gs
-
-4. Run PropertyService\.gs to save the SHEET_ID for the script to use later.
-   ![alt text](./Images/image-1.png)
+   > Replace code if needed such as SHEET_ID in Code\.gs
 
 ### Automation Triggers
 
