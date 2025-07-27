@@ -49,39 +49,41 @@ function updateSheetNamesRow() {
 
   var col_cur = 1; // cursor to allow the program to know which row is it at 
   var row = 1; // row to start from
-  for (var i = 2; i < sheets.length; i++) {
-      var name = sheets[i].getName();
-      var rows = getLastRow(SHEET.getSheetByName(name), "F1:F") // number of rows to occupy
-      val = sheets[i].getRange(`E1:F${rows}`).getValues();
-      most = Math.max(rows, most)
-      // write total expenses from other sheets into first page
-      sheet.getRange(row, col_cur, rows, val[0].length).clearContent().clearFormat()
-        .setValues(val)
-        .setBackground("#D7FCD4") //background color: grey
-        .setBorder(true,true,true,true,true,true); //borders
+  for (var i = 0; i < sheets.length; i++) {
+    if (!["Total", "Template"].includes(sheets[i].getName())){
+        var name = sheets[i].getName();
+        var rows = getLastRow(SHEET.getSheetByName(name), "F1:F") // number of rows to occupy
+        val = sheets[i].getRange(`E1:F${rows}`).getValues();
+        most = Math.max(rows, most)
+        // write total expenses from other sheets into first page
+        sheet.getRange(row, col_cur, rows, val[0].length).clearContent().clearFormat()
+          .setValues(val)
+          .setBackground("#D7FCD4") //background color: grey
+          .setBorder(true,true,true,true,true,true); //borders
 
-      sheet.getRange(rows + row - 1, col_cur, 1, 1).setValue("Overall")
-      sheet.getRange(rows + row - 1, col_cur, 1, 2).setBackground("#72F3FF").setFontWeight("Bold")//overall
+        sheet.getRange(rows + row - 1, col_cur, 1, 1).setValue("Overall")
+        sheet.getRange(rows + row - 1, col_cur, 1, 2).setBackground("#72F3FF").setFontWeight("Bold")//overall
 
-      //set number format to be $0.00
-      sheet.getRange(row+1, col_cur+1, rows, val[0].length).setNumberFormat("$#,##0.00")
-      
-      sheet.getRange(row, col_cur, 1, 2).clearContent().clearFormat()
-        .mergeAcross() //merge cell
-        .setHorizontalAlignment("center") //align center
-        .setValue(name) //sets name of sheet
-        .setFontWeight("Bold") //Font: bold
-        .setBackground("#545454") //Background Color: black
-        .setFontColor("White"); //Font Color: White
+        //set number format to be $0.00
+        sheet.getRange(row+1, col_cur+1, rows, val[0].length).setNumberFormat("$#,##0.00")
+        
+        sheet.getRange(row, col_cur, 1, 2).clearContent().clearFormat()
+          .mergeAcross() //merge cell
+          .setHorizontalAlignment("center") //align center
+          .setValue(name) //sets name of sheet
+          .setFontWeight("Bold") //Font: bold
+          .setBackground("#545454") //Background Color: black
+          .setFontColor("White"); //Font Color: White
 
-      col_cur += 3 // increment column by 3 (to have spacing between each month)
+        col_cur += 3 // increment column by 3 (to have spacing between each month)
 
-      if (col_cur > 3){
-        col_cur = 1
-        row += most + 1
-        most = 0
-      }
-    };
+        if (col_cur > 3){
+          col_cur = 1
+          row += most + 1
+          most = 0
+        }
+      };
+    }
 }
 
 function createNewSheet(){
