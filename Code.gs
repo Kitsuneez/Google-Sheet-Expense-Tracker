@@ -8,6 +8,10 @@ function doPost(e) {
   var category = e.parameter["Category"]
   row = [toTitleCase(name), category, amount]
   const sheet = getSheetByDate() // or your tab name
+  if (sheet == null){
+    createNewSheet()
+    const sheet = getSheetByDate()
+  }
   var lastRow = getLastRow(sheet, 'A1:A') + 1
   console.log(lastRow)
   sheet.getRange(lastRow, 1, 1, row.length).setValues([row]);
@@ -15,6 +19,10 @@ function doPost(e) {
 
 function doGet(e){
   const sheet = getSheetByDate()
+  if (sheet == null){
+    createNewSheet()
+    const sheet = getSheetByDate()
+  }
 
   const colsToTake = 2
   const rowsToTake = getLastRow(sheet, "F1:F")
