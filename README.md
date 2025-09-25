@@ -102,6 +102,6 @@ We will be automating two functions in our App Script
 1. Download [Scriptable](https://apps.apple.com/us/app/scriptable/id1405459188)
 2. Create a new Script and paste the content of scriptable.js into it
 3. replace the blank url with your deployment url copied earlier
-    ![alt text](image.png)
+    ![alt text](Images/image.png)
 4. Add Scriptable widget (Medium Size) on your homescreen and select your new script as your script
 ![](./Images/scriptable.jpg)
