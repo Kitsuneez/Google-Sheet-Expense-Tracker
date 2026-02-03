@@ -47,18 +47,29 @@ function toTitleCase(name){
 function getLastRow(sheet, col){
   var lastRow = sheet.getLastRow();
   var values = sheet.getRange(col + lastRow).getValues();
-  return values.flat(Infinity).filter(item=>item!=='').length + 1
+  return values.flat(Infinity).filter(item=>item!=='').length
 }
 
 function updateSheetNamesRow() {
   var most = 0
-  var sheet = SHEET.getSheetByName("Total"); // current sheet
+  var date = new Date(Date.now())
+  year = Utilities.formatDate(date,"SGT", "yyyy")
+  // year = 2026
+  var sheet = SHEET.getSheetByName("Total " + year); // current sheet
+  if (sheet == null){
+    SHEET.insertSheet("Total "+ year, 50, 50);
+    sheet = SHEET.getSheetByName("Total "+ year)
+  }
   var sheets = SHEET.getSheets();
 
   var col_cur = 1; // cursor to allow the program to know which row is it at 
   var row = 1; // row to start from
   for (var i = 2; i < sheets.length; i++) {
       var name = sheets[i].getName();
+      if (!(name.includes(year))){
+        if (!(name.includes("Total"))) SHEET.deleteSheet(sheets[i])
+        continue
+      };
       var rows = getLastRow(SHEET.getSheetByName(name), "F1:F") // number of rows to occupy
       val = sheets[i].getRange(`E1:F${rows}`).getValues();
       most = Math.max(rows, most)
