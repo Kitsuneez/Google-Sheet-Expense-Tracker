@@ -1,6 +1,9 @@
-//replace <SHEET_ID> with your spreadsheet ID
+var scriptProperties = PropertiesService.getScriptProperties();
+
+// replace <SHEET_ID> with your own
 // https://docs.google.com/spreadsheets/d/<SHEET_ID>/edit?gid=0#gid=0
-const SHEET = SpreadsheetApp.openById("<SHEET_ID>")
+var SHEED_ID = "<SHEET_ID>"
+const SHEET = SpreadsheetApp.openById(SHEED_ID)
 
 function doPost(e) {
   var name = e.parameter["Expense"]
