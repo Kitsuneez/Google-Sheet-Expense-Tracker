@@ -1,4 +1,4 @@
-const url = "https://script.google.com/macros/s/AKfycbxrlLp4nSrV0abzvXSOz4B-iSOimg-2liJFyQE-gF3wbeFmTCL1iP_KuDvXwuQlGe61lw/exec"
+const url = "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
 const data = await fetchData()
 console.log(data)
 var monokaiPro = [

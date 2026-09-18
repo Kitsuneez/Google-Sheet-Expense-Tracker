@@ -61,10 +61,10 @@ The Wallet prompt uses these seven categories: **F&B, Health, Shopping, Transpor
 
 1. Create a project in [Google Apps Script](https://script.google.com/home/projects/create).
 2. Replace the default `Code.gs` contents with [Code.gs](./Code.gs) from this repository.
-3. Replace `<SHEET_ID>` with your copied spreadsheet ID. The variable is currently spelled `SHEED_ID` in the code:
+3. Replace `<SHEET_ID>` with your copied spreadsheet ID.:
 
    ```javascript
-   var SHEED_ID = "YOUR_SPREADSHEET_ID"
+   var SHEET_ID = "YOUR_SPREADSHEET_ID"
    ```
 
 4. Save the project, select `createNewSheet`, and run it. Authorize access when prompted.
